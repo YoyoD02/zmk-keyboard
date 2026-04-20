@@ -6,9 +6,19 @@ manifest:
       url-base: https://github.com/zmkfirmware
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+
+    - name: caksoylar    # 开发者caksoylar的仓库别名，用于引用他的模块
+      url-base: https://github.com/caksoylar
+
+
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+
+    - name: zmk-rgbled-widget  # 你要添加的RGB灯效模块
+      remote: caksoylar
+      revision: main           # 指定使用该模块的main分支
+
   self:
     path: config

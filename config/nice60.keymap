@@ -48,3 +48,20 @@
         };
     };
 };
+
+    macros {
+        // 定义一个名为 "rgb_layer_update" 的宏
+        rgb_layer_update: rgb_layer_update {
+            compatible = "zmk,behavior-macro";
+            label = "rgb_layer_update";
+            // 当该宏被“按下”时 (binding-cells = <0>)，执行下面的动作序列
+            // 1. 等待5毫秒
+            // 2. 触发一个模拟按键 &rgb_led_widget UPDATE
+            // 注意: &rgb_led_widget 是模块提供的一个行为，需要具体模块支持
+            #binding-cells = <0>;
+            bindings
+                = <&macro_wait_time 5>
+                , <&macro_press &rgb_led_widget UPDATE>
+                ;
+        };
+    };

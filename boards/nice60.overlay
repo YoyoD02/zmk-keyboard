@@ -137,7 +137,10 @@
     status = "okay";
 };
 
-
+// 创建一个“别名” (aliases)，给下面的RGB节点起一个更易读的名字 "rgbled"
+    aliases {
+        rgbled = &my_rgb_led; // 将 "rgbled" 这个名字指向 "my_rgb_led" 节点
+    };
 
 /* 引脚控制配置 - 用于SPI/I2C等外设 */
 &pinctrl {
