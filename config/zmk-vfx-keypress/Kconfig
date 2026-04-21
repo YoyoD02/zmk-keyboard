@@ -1,0 +1,8 @@
+
+
+mainmenu "ZMK Keypress Effect Configuration"
+config ZMK_VFX_KEYPRESS
+    bool "ZMK Keypress Visual Effect"
+    default y
+    help
+      Enable the keypress visual effect module.

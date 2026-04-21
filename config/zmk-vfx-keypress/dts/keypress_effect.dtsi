@@ -1,0 +1,11 @@
+// 标准Zephyr设备树文件头
+
+// 文件: zmk-vfx-keypress/dts/keypress_effect.dtsi
+
+/ {
+    keypress_effect: keypress_effect {
+        // 必须与C代码中的DT_DRV_COMPAT保持一致
+        compatible = "zmk,vfx-keypress";
+        status = "okay";
+    };
+};
