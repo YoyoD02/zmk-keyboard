@@ -1,7 +1,7 @@
 // 文件: zmk-vfx-keypress/src/keypress_effect.c
 
 // 在包含任何头文件之前定义 DT_DRV_COMPAT
-#define DT_DRV_COMPAT zmk_vfx_keypress  // 必须与 .dtsi 中的 compatible 完全一致
+
 
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
@@ -11,6 +11,8 @@
 #include <zmk/event_manager.h>
 #include <zmk/events/position_state_changed.h>
 #include <zmk/rgb_underglow.h>
+
+#define DT_DRV_COMPAT zmk_vfx_keypress  // 必须与 .dtsi 中的 compatible 完全一致
 
 LOG_MODULE_REGISTER(keypress_effect, LOG_LEVEL_INF);
 
@@ -48,7 +50,7 @@ static const int position_to_led_map[] = {
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,   // 第二行
     30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,       // 第三行
     45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58,       // 第四行
-    59, 60, 61, 62, 63, 64, 65, 66, 67, 68,                       // 第五行（底部）
+    59, 60, 61, 62, 63, 64, 65, 66, 67,                       // 第五行（底部）
 
 };
 
