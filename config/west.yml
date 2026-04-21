@@ -18,7 +18,7 @@ manifest:
     - name: zmk-vfx-keypress       # 你的新灯效模块名称
       remote: yoyod02
       revision: main
-      path: zmk-keyboard/zmk-vfx-keypress   # 告诉 west 模块在仓库中的子路径
+      path: zmk-keyboard/config/zmk-vfx-keypress   # 告诉 west 模块在仓库中的子路径
 
   self:
     path: config
