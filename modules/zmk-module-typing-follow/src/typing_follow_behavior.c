@@ -8,6 +8,53 @@
 
 LOG_MODULE_REGISTER(typing_follow_behavior, LOG_LEVEL_DBG);
 
+
+#include "typing_follow_effect.h"
+
+LOG_MODULE_REGISTER(typing_follow_behavior, LOG_LEVEL_DBG);
+
+// ======================== 效果开关状态管理 ========================
+
+// 静态变量：记录打字跟随效果是否启用（默认开启）
+static bool typing_follow_enabled = true;
+
+// 供效果模块查询当前开关状态
+bool typing_follow_effect_is_enabled(void) {
+    return typing_follow_enabled;
+}
+
+// 切换效果开关状态
+void typing_follow_effect_toggle(void) {
+    typing_follow_enabled = !typing_follow_enabled;
+    LOG_INF("Typing follow effect %s", 
+            typing_follow_enabled ? "ENABLED" : "DISABLED");
+
+    // 可选：提供视觉反馈（LED 闪烁一次）
+    // 注意：如果 ZMK 的 RGB API 可用，可以取消下面的注释块
+    /*
+    #ifdef CONFIG_ZMK_RGB_UNDERGLOW
+    extern struct zmk_led_hsb zmk_rgb_underglow_current_color;
+    struct zmk_led_hsb original = zmk_rgb_underglow_current_color;
+    
+    if (typing_follow_enabled) {
+        // 开启效果：绿色快速闪烁
+        struct zmk_led_hsb flash = { .hue = 80, .saturation = 100, .brightness = 100 };
+        zmk_rgb_underglow_set_hsb(flash);
+        k_sleep(K_MSEC(100));
+    } else {
+        // 关闭效果：红色快速闪烁
+        struct zmk_led_hsb flash = { .hue = 0, .saturation = 100, .brightness = 100 };
+        zmk_rgb_underglow_set_hsb(flash);
+        k_sleep(K_MSEC(100));
+    }
+    zmk_rgb_underglow_set_hsb(original);
+    #endif
+    */
+}
+
+
+
+
 // 行为结构体定义
 struct behavior_typing_follow_config {
     uint32_t fade_duration_ms;
@@ -16,7 +63,7 @@ struct behavior_typing_follow_config {
 
 // 行为数据（运行时状态）
 struct behavior_typing_follow_data {
-    bool enabled;
+    bool initialized;
 };
 
 /**
@@ -26,7 +73,7 @@ struct behavior_typing_follow_data {
 static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
                                       struct zmk_behavior_binding_event event) {
     LOG_DBG("Typing follow behavior triggered");
-    
+    typing_follow_effect_toggle();
     // 可以在这里添加切换效果开关的逻辑
     // 例如：临时提高亮度或触发特殊效果
     
