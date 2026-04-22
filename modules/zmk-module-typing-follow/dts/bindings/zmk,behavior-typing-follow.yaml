@@ -1,0 +1,27 @@
+# modules/zmk-module-typing-follow/dts/bindings/zmk,behavior-typing-follow.yaml
+# Devicetree绑定定义，声明行为节点的属性
+
+description: Typing Follow LED Effect Behavior
+
+compatible: "zmk,behavior-typing-follow"
+
+include: [ "zero_param.yaml" ]
+
+properties:
+  "#binding-cells":
+    const: 0
+
+  label:
+    required: true
+    type: string
+    description: Human readable label for the behavior
+
+  fade-duration-ms:
+    type: int
+    default: 300
+    description: Fade-out duration in milliseconds
+
+  max-brightness:
+    type: int
+    default: 100
+    description: Peak brightness percentage (0-100)

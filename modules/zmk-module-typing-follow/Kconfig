@@ -1,0 +1,40 @@
+# modules/zmk-module-typing-follow/Kconfig
+# 模块的Kconfig配置，用于启用/禁用功能
+
+menuconfig ZMK_BEHAVIOR_TYPING_FOLLOW
+    bool "Typing Follow Effect"
+    depends on ZMK_RGB_UNDERGLOW
+    select ZMK_RGB_UNDERGLOW_EXT_POWER
+    help
+      Enable typing follow lighting effect.
+      When a key is pressed, LEDs light up and then fade out.
+      
+      启用打字跟随灯效：按键时LED亮起并逐渐熄灭。
+
+if ZMK_BEHAVIOR_TYPING_FOLLOW
+
+config ZMK_TYPING_FOLLOW_FADE_DURATION_MS
+    int "Fade duration in milliseconds"
+    default 300
+    range 100 2000
+    help
+      Duration of the fade-out effect in milliseconds.
+      淡出效果的持续时间（毫秒）。
+
+config ZMK_TYPING_FOLLOW_MAX_BRIGHTNESS
+    int "Maximum brightness percentage"
+    default 100
+    range 0 100
+    help
+      Peak brightness when key is pressed.
+      按键时的峰值亮度百分比。
+
+config ZMK_TYPING_FOLLOW_FADE_STEPS
+    int "Number of fade steps"
+    default 10
+    range 5 30
+    help
+      Number of steps for smooth fade-out animation.
+      淡出动画的步数，越多越平滑。
+
+endif

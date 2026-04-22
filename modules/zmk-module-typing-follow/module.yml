@@ -1,0 +1,20 @@
+# modules/zmk-module-typing-follow/module.yml
+# Zephyr模块清单文件，声明模块的基本信息
+
+manifest:
+  version: 1.0.0
+  description: "ZMK typing follow lighting effect"
+  author: "Your Name"
+  
+  # 声明该模块将引入的源代码目录
+  files:
+    - src/
+    - dts/
+  
+  # 声明该模块依赖ZMK核心功能
+  dependencies:
+    - required: true
+      name: zmk
+  
+  # 声明Kconfig文件位置
+  kconfig: Kconfig

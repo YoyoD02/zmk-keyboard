@@ -228,8 +228,20 @@
             reg = <0x000f4000 0x0000c000>;
         };
     };
+
+        behaviors {
+        typing_follow: behavior_typing_follow {
+            compatible = "zmk,behavior-typing-follow";
+            label = "TYPING_FOLLOW";
+            #binding-cells = <0>;
+            fade-duration-ms = <300>;
+            max-brightness = <100>;
+        };
+    };
 };
 
 &layout_60_ansi {
     transform = <&default_transform>;
 };
+
+

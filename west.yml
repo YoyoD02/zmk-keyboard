@@ -1,0 +1,27 @@
+# west.yml
+# 在项目的west.yml中添加自定义模块
+
+manifest:
+  defaults:
+    revision: v0.3
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: yoyod02
+      url-base: https://github.com/YoyoD02
+
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      import: app/west.yml
+
+    - name: zmk-keyboard              # 改为你的实际仓库名
+      remote: yoyod02
+      revision: main                  # 使用你的仓库主分支，可改为特定 commit 或 tag
+      path: modules/zmk-module-typing-follow   # 克隆到 modules/ 子目录下
+      # 如果你的仓库根目录就是模块内容，不需要额外指定子目录
+      # 如果模块位于仓库的子目录（如 ./zmk-module-typing-follow），则无需额外配置
+     
+  # 本地项目的路径（通常就是当前目录）
+  self:
+    path: config
