@@ -1,0 +1,24 @@
+manifest:
+  defaults:
+    revision: v0.3
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    # Additional modules containing boards/shields/custom code can be listed here as well
+    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+
+    - name: yoyod02   # 替换为你的GitHub用户名
+      url-base: https://github.com/YoyoD02
+
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      import: app/west.yml
+
+    - name: zmk-keyboard       # 你的新灯效模块名称
+      remote: yoyod02
+      revision: main
+      path: zmk-keyboard   # 告诉 west 模块在仓库中的子路径
+
+  self:
+    path: config
