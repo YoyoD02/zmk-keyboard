@@ -4,7 +4,7 @@
 manifest:
   version: 1.0.0
   description: "ZMK typing follow lighting effect"
-  author: "Your Name"
+  author: "toutou"
   
   # 声明该模块将引入的源代码目录
   files:
